@@ -3,4 +3,4 @@
 ---
 > ```echo "Hello PHP";```
 >>> ---
-<h1 style="color: green"> Readme file is ready</h1>
+<h1 style='color: green'> Readme file is ready</h1>
