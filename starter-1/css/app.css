@@ -1,4 +1,7 @@
 * {
 	font-family: "oldenglish" "arial";
-	color: red;
+}
+
+h1:first-of-type{
+	color: green;
 }
