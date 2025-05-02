@@ -6,11 +6,13 @@ okay?
 
 # test 2
 ---
-table 
->how to do this  
+ 
+> Code notes part
 ```php
 <?php   echo 'Hello'; ?>
 ```
+---
+> ### table
 
 | Tables | Are | Cool |
 | --- | :---:| ---:|
