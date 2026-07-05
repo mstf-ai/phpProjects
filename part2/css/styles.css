@@ -1,0 +1,35 @@
+/* الوضع الليلي */
+body.dark-mode {
+  background-color: #121212;
+  color: #f0f0f0;
+}
+body.dark-mode header,
+body.dark-mode footer {
+  background-color: #1e1e1e;
+}
+
+/* إخفاء/إظهار القائمة */
+#navbar-menu.hidden {
+  display: none;
+}
+#navbar-menu.active {
+  display: block;
+}
+
+/* توست */
+.toast {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 6px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 9999;
+}
+.toast.show {
+  opacity: 1;
+}

@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>العروض الخاصة | شركة السفر المثالية</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #f8f9fa;
+            --dark: #343a40;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, var(--primary), #1a252f);
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .navbar {
+            background-color: var(--primary);
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+        }
+        
+        .nav-links a:hover {
+            background-color: var(--secondary);
+            transform: translateY(-2px);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .page-header h1 {
+            color: var(--primary);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .page-header p {
+            color: #666;
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* تصاميم العروض */
+        .offers-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .offer-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .offer-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .offer-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: var(--accent);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-weight: bold;
+            z-index: 2;
+        }
+        
+        .offer-image {
+            height: 250px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .offer-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .offer-card:hover .offer-image img {
+            transform: scale(1.05);
+        }
+        
+        .offer-content {
+            padding: 1.5rem;
+            position: relative;
+        }
+        
+        .offer-content h3 {
+            margin: 0 0 0.5rem;
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+        
+        .offer-location {
+            display: flex;
+            align-items: center;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        
+        .offer-location i {
+            margin-left: 0.5rem;
+            color: var(--secondary);
+        }
+        
+        .offer-description {
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+        
+        .offer-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+        }
+        
+        .offer-price {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .old-price {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 1rem;
+        }
+        
+        .new-price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--accent);
+        }
+        
+        .discount {
+            background-color: var(--secondary);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        
+        .offer-actions {
+            display: flex;
+            gap: 0.8rem;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.6rem 1.2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-primary {
+            background-color: var(--secondary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            color: var(--secondary);
+            border: 1px solid var(--secondary);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--secondary);
+            color: white;
+        }
+        
+        /* قسم العد التنازلي */
+        .countdown-section {
+            background: linear-gradient(135deg, var(--primary), #1a252f);
+            color: white;
+            padding: 3rem 1rem;
+            text-align: center;
+            margin: 4rem 0;
+            border-radius: 10px;
+        }
+        
+        .countdown-section h2 {
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+        }
+        
+        .countdown-section p {
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .countdown-timer {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .countdown-item {
+            background: rgba(255,255,255,0.1);
+            padding: 1rem;
+            border-radius: 8px;
+            min-width: 80px;
+        }
+        
+        .countdown-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 0.3rem;
+        }
+        
+        .countdown-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        /* التذييل */
+        .footer {
+            background: linear-gradient(135deg, var(--primary), #1a252f);
+            color: white;
+            padding: 3rem 1rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .copyright {
+            margin-top: 1.5rem;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.5rem;
+            }
+            
+            .offers-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .countdown-timer {
+                flex-wrap: wrap;
+            }
+            
+            .page-header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- رأس الصفحة -->
+    <header class="header">
+        <h1>شركة السفر المثالية</h1>
+        <p>عروض خاصة وخصومات حصرية على أجمل الرحلات</p>
+    </header>
+
+    <!-- شريط التنقل -->
+    <nav class="navbar">
+        <div class="nav-links">
+            <a href="index.html">الرئيسية</a>
+            <a href="about.html">من نحن</a>
+            <a href="destinations.html">الوجهات</a>
+            <a href="offers.html">العروض</a>
+            <a href="testimonials.html">آراء العملاء</a>
+            <a href="contact.html">اتصل بنا</a>
+        </div>
+    </nav>
+
+    <!-- محتوى الصفحة -->
+    <main class="container">
+        <div class="page-header">
+            <h1>العروض الخاصة</h1>
+            <p>استفد من عروضنا الحصرية ووفر على نفسك مع أفضل الأسعار لرحلات أحلامك</p>
+        </div>
+        
+        <!-- قسم العد التنازلي للعرض -->
+        <section class="countdown-section">
+            <h2>العرض الأكثر طلباً ينتهي قريباً!</h2>
+            <p>احجز رحلتك إلى إسطنبول الآن واستفد من خصم 30% على جميع الباقات. العرض ساري حتى نهاية هذا الشهر</p>
+            
+            <div class="countdown-timer">
+                <div class="countdown-item">
+                    <div class="countdown-value" id="days">05</div>
+                    <div class="countdown-label">أيام</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-value" id="hours">12</div>
+                    <div class="countdown-label">ساعات</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-value" id="minutes">45</div>
+                    <div class="countdown-label">دقائق</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-value" id="seconds">30</div>
+                    <div class="countdown-label">ثواني</div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- قســم العروض -->
+        <section class="offers-section">
+            <h2 style="margin-bottom: 1.5rem; color: var(--primary); text-align: center;">أحدث العروض</h2>
+            
+            <div class="offers-container">
+                <!-- عرض 1 -->
+                <div class="offer-card">
+                    <div class="offer-badge">خصم 30%</div>
+                    <div class="offer-image">
+                        <img src="https://images.unsplash.com/photo-1527631746610-bca00a040d60?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="إسطنبول">
+                    </div>
+                    <div class="offer-content">
+                        <h3>رحلة إلى إسطنبول</h3>
+                        <div class="offer-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>تركيا - 5 أيام / 4 ليالي</span>
+                        </div>
+                        <p class="offer-description">
+                            استمتع برحلة مميزة إلى إسطنبول تشمل زيارة أهم المعالم مثل آيا صوفيا، المسجد الأزرق، وقصر توب كابي. العرض يشمل الإقامة في فندق 5 نجوم مع إفطار.
+                        </p>
+                        <div class="offer-meta">
+                            <div class="offer-price">
+                                <span class="old-price">$1200</span>
+                                <span class="new-price">$840</span>
+                            </div>
+                            <span class="discount">وفر $360</span>
+                        </div>
+                        <div class="offer-actions">
+                            <a href="booking.html?offer=istanbul" class="btn btn-primary">
+                                <i class="fas fa-shopping-cart"></i> احجز الآن
+                            </a>
+                            <a href="tours.html?destination=istanbul" class="btn btn-outline">
+                                <i class="fas fa-info-circle"></i> التفاصيل
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- عرض 2 -->
+                <div class="offer-card">
+                    <div class="offer-badge">عرض العائلة</div>
+                    <div class="offer-image">
+                        <img src="https://images.unsplash.com/photo-1518684079-3c830dcef090?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="دبي">
+                    </div>
+                    <div class="offer-content">
+                        <h3>عرض العائلة في دبي</h3>
+                        <div class="offer-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>الإمارات - 7 أيام / 6 ليالي</span>
+                        </div>
+                        <p class="offer-description">
+                            عرض خاص للعائلات! إقامة مجانية للأطفال تحت 12 سنة. يشمل العرض تذاكر دخول إلى دبي بارك وأكوافنتشر وزيارة برج خليفة.
+                        </p>
+                        <div class="offer-meta">
+                            <div class="offer-price">
+                                <span class="old-price">$1800</span>
+                                <span class="new-price">$1500</span>
+                            </div>
+                            <span class="discount">وفر $300</span>
+                        </div>
+                        <div class="offer-actions">
+                            <a href="booking.html?offer=dubai-family" class="btn btn-primary">
+                                <i class="fas fa-shopping-cart"></i> احجز الآن
+                            </a>
+                            <a href="tours.html?destination=dubai" class="btn btn-outline">
+                                <i class="fas fa-info-circle"></i> التفاصيل
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- عرض 3 -->
+                <div class="offer-card">
+                    <div class="offer-badge">عرض مبكر</div>
+                    <div class="offer-image">
+                        <img src="https://images.unsplash.com/photo-1533929736458-ca588d08c8be?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="باريس">
+                    </div>
+                    <div class="offer-content">
+                        <h3>باريس بخصم 25%</h3>
+                        <div class="offer-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>فرنسا - 6 أيام / 5 ليالي</span>
+                        </div>
+                        <p class="offer-description">
+                            احجز قبل 60 يومًا واحصل على خصم 25% على رحلة باريس الرومانسية. يشمل العرض جولة في متحف اللوفر، رحلة نهر السين، وتذاكر دخول إلى برج إيفل.
+                        </p>
+                        <div class="offer-meta">
+                            <div class="offer-price">
+                                <span class="old-price">$2000</span>
+                                <span class="new-price">$1500</span>
+                            </div>
+                            <span class="discount">وفر $500</span>
+                        </div>
+                        <div class="offer-actions">
+                            <a href="booking.html?offer=paris-early" class="btn btn-primary">
+                                <i class="fas fa-shopping-cart"></i> احجز الآن
+                            </a>
+                            <a href="tours.html?destination=paris" class="btn btn-outline">
+                                <i class="fas fa-info-circle"></i> التفاصيل
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- عرض 4 -->
+                <div class="offer-card">
+                    <div class="offer-badge">عرض خاص</div>
+                    <div class="offer-image">
+                        <img src="https://images.unsplash.com/photo-1527631746610-bca00a040d60?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="ماليزيا">
+                    </div>
+                    <div class="offer-content">
+                        <h3>ماليزيا بخصم 20%</h3>
+                        <div class="offer-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>ماليزيا - 8 أيام / 7 ليالي</span>
+                        </div>
+                        <p class="offer-description">
+                            رحلة شاملة إلى كوالالمبور ولنكاوي مع خصم 20%. يشمل العرض إقامة في فنادق 4 نجوم، وجولات سياحية، ومواصلات داخلية.
+                        </p>
+                        <div class="offer-meta">
+                            <div class="offer-price">
+                                <span class="old-price">$1600</span>
+                                <span class="new-price">$1280</span>
+                            </div>
+                            <span class="discount">وفر $320</span>
+                        </div>
+                        <div class="offer-actions">
+                            <a href="booking.html?offer=malaysia" class="btn btn-primary">
+                                <i class="fas fa-shopping-cart"></i> احجز الآن
+                            </a>
+                            <a href="tours.html?destination=malaysia" class="btn btn-outline">
+                                <i class="fas fa-info-circle"></i> التفاصيل
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- عرض 5 -->
+                <div class="offer-card">
+                    <div class="offer-badge">عرض الأسبوع</div>
+                    <div class="offer-image">
+                        <img src="https://images.unsplash.com/photo-1503917988258-f87a78e3c995?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="اليونان">
+                    </div>
+                    <div class="offer-content">
+                        <h3>سانتوريني بخصم 15%</h3>
+                        <div class="offer-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>اليونان - 5 أيام / 4 ليالي</span>
+                        </div>
+                        <p class="offer-description">
+                            عرض الأسبوع على رحلة سانتوريني الرومانسية. يشمل الإقامة في فندق بويوتيك مع إطلالة على البحر، وجولات في أويا وفييرا.
+                        </p>
+                        <div class="offer-meta">
+                            <div class="offer-price">
+                                <span class="old-price">$1700</span>
+                                <span class="new-price">$1445</span>
+                            </div>
+                            <span class="discount">وفر $255</span>
+                        </div>
+                        <div class="offer-actions">
+                            <a href="booking.html?offer=santorini" class="btn btn-primary">
+                                <i class="fas fa-shopping-cart"></i> احجز الآن
+                            </a>
+                            <a href="tours.html?destination=santorini" class="btn btn-outline">
+                                <i class="fas fa-info-circle"></i> التفاصيل
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- عرض 6 -->
+                <div class="offer-card">
+                    <div class="offer-badge">عرض آخر لحظة</div>
+                    <div class="offer-image">
+                        <img src="https://images.unsplash.com/photo-1506197603052-3cc9c3a201bd?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="تايلاند">
+                    </div>
+                    <div class="offer-content">
+                        <h3>بانكوك وفوكيت بخصم 40%</h3>
+                        <div class="offer-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>تايلاند - 7 أيام / 6 ليالي</span>
+                        </div>
+                        <p class="offer-description">
+                            عرض آخر لحظة على رحلة تايلاند! خصم 40% على الرحلات في الشهر القادم. يشمل جولات في بانكوك وشاطئ باتونج في فوكيت.
+                        </p>
+                        <div class="offer-meta">
+                            <div class="offer-price">
+                                <span class="old-price">$1400</span>
+                                <span class="new-price">$840</span>
+                            </div>
+                            <span class="discount">وفر $560</span>
+                        </div>
+                        <div class="offer-actions">
+                            <a href="booking.html?offer=thailand" class="btn btn-primary">
+                                <i class="fas fa-shopping-cart"></i> احجز الآن
+                            </a>
+                            <a href="tours.html?destination=thailand" class="btn btn-outline">
+                                <i class="fas fa-info-circle"></i> التفاصيل
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- قسم النشرة البريدية -->
+        <section class="countdown-section" style="background: linear-gradient(135deg, #e74c3c, #c0392b); margin-top: 4rem;">
+            <h2>اشترك في نشرتنا البريدية</h2>
+            <p>احصل على أحدث العروض والخصومات مباشرة إلى بريدك الإلكتروني</p>
+            
+            <form style="max-width: 500px; margin: 0 auto; display: flex; gap: 0.5rem; margin-top: 1.5rem;">
+                <input type="email" placeholder="بريدك الإلكتروني" style="flex: 1; padding: 0.8rem; border: none; border-radius: 5px; font-family: 'Tajawal';">
+                <button type="submit" class="btn btn-white" style="background: white; color: #e74c3c; font-weight: bold;">
+                    اشتراك
+                </button>
+            </form>
+        </section>
+    </main>
+
+    <!-- التذييل -->
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="index.html">الرئيسية</a>
+            <a href="about.html">من نحن</a>
+            <a href="destinations.html">الوجهات</a>
+            <a href="offers.html">العروض</a>
+            <a href="testimonials.html">آراء العملاء</a>
+            <a href="contact.html">اتصل بنا</a>
+            <a href="privacy.html">سياسة الخصوصية</a>
+        </div>
+        <p class="copyright">© 2023 شركة السفر المثالية. جميع الحقوق محفوظة.</p>
+    </footer>
+
+    <script>
+        // كود العد التنازلي
+        function updateCountdown() {
+            const endDate = new Date();
+            endDate.setDate(endDate.getDate() + 5); // ينتهي العرض بعد 5 أيام من الآن
+            
+            const now = new Date().getTime();
+            const distance = endDate - now;
+            
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            document.getElementById('days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+            
+            if (distance < 0) {
+                clearInterval(countdownTimer);
+                document.querySelector('.countdown-section h2').textContent = "انتهى العرض!";
+                document.querySelector('.countdown-section p').textContent = "تابع عروضنا الجديدة القريباً";
+                document.querySelector('.countdown-timer').style.display = 'none';
+            }
+        }
+        
+        updateCountdown();
+        const countdownTimer = setInterval(updateCountdown, 1000);
+        
+        // كود لإضافة تأثير عند التمرير
+        document.addEventListener('DOMContentLoaded', function() {
+            const offerCards = document.querySelectorAll('.offer-card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            offerCards.forEach(card => {
+                card.style.opacity = 0;
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'all 0.5s ease';
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>شركة الرحلات السياحية | رحلاتنا</title>
+    <style>
+        /* CSS العام */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        nav {
+            background-color: #34495e;
+            padding: 15px;
+            text-align: center;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        
+        .container {
+            width: 90%;
+            margin: 30px auto;
+            padding: 20px;
+        }
+        
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        
+        /* تصاميم خاصة بصفحة الرحلات */
+        .search-filter {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        
+        .filter-group {
+            margin-bottom: 15px;
+        }
+        
+        .filter-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        select, input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .tours-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .tour-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .tour-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .tour-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .tour-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .tour-card:hover .tour-image img {
+            transform: scale(1.05);
+        }
+        
+        .tour-info {
+            padding: 20px;
+        }
+        
+        .tour-info h3 {
+            margin-top: 0;
+            color: #2c3e50;
+        }
+        
+        .tour-meta {
+            display: flex;
+            justify-content: space-between;
+            margin: 15px 0;
+            color: #7f8c8d;
+        }
+        
+        .tour-price {
+            font-size: 20px;
+            font-weight: bold;
+            color: #e74c3c;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #2980b9;
+        }
+        
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+        
+        /* تصميم متجاوب */
+        @media (max-width: 768px) {
+            .tours-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            nav a {
+                display: block;
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- رأس الصفحة -->
+    <header>
+        <h1>رحلاتنا السياحية</h1>
+        <p>اكتشف أفضل الوجهات حول العالم</p>
+    </header>
+
+    <!-- شريط التنقل -->
+    <nav>
+        <a href="index.html">الرئيسية</a>
+        <a href="about.html">من نحن</a>
+        <a href="tours.html">الرحلات</a>
+        <a href="booking.html">الحجوزات</a>
+        <a href="contact.html">اتصل بنا</a>
+    </nav>
+
+    <!-- محتوى الصفحة -->
+    <div class="container">
+        <!-- قسم البحث والتصفية -->
+        <div class="search-filter">
+            <h2>ابحث عن رحلتك المثالية</h2>
+            <div class="filter-group">
+                <label for="destination">الوجهة:</label>
+                <select id="destination">
+                    <option value="">جميع الوجهات</option>
+                    <option value="turkey">تركيا</option>
+                    <option value="dubai">دبي</option>
+                    <option value="malaysia">ماليزيا</option>
+                    <option value="europe">أوروبا</option>
+                </select>
+            </div>
+            
+            <div class="filter-group">
+                <label for="duration">مدة الرحلة:</label>
+                <select id="duration">
+                    <option value="">جميع المدد</option>
+                    <option value="3-5">3-5 أيام</option>
+                    <option value="6-10">6-10 أيام</option>
+                    <option value="11+">أكثر من 10 أيام</option>
+                </select>
+            </div>
+            
+            <div class="filter-group">
+                <label for="price-range">نطاق السعر:</label>
+                <select id="price-range">
+                    <option value="">جميع الأسعار</option>
+                    <option value="0-2000">حتى 2000 دولار</option>
+                    <option value="2000-5000">2000 - 5000 دولار</option>
+                    <option value="5000+">أكثر من 5000 دولار</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- عرض الرحلات -->
+        <h2>رحلاتنا المتاحة</h2>
+        <div class="tours-grid">
+            <!-- رحلة 1 -->
+            <div class="tour-card">
+                <div class="tour-image">
+                    <img src="https://images.unsplash.com/photo-1524235325756-750277bf9ac8?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="إسطنبول">
+                </div>
+                <div class="tour-info">
+                    <h3>رحلة إلى إسطنبول</h3>
+                    <div class="tour-meta">
+                        <span>5 أيام / 4 ليالي</span>
+                        <span>تركيا</span>
+                    </div>
+                    <p>استمتع بجولة في أجمل معالم إسطنبول تشمل آيا صوفيا، المسجد الأزرق، وقصر توب كابي.</p>
+                    <div class="tour-price">$1,200</div>
+                    <a href="booking.html" class="btn">احجز الآن</a>
+                </div>
+            </div>
+
+            <!-- رحلة 2 -->
+            <div class="tour-card">
+                <div class="tour-image">
+                    <img src="https://images.unsplash.com/photo-1518684079-3c830dcef090?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="دبي">
+                </div>
+                <div class="tour-info">
+                    <h3>رحلة إلى دبي</h3>
+                    <div class="tour-meta">
+                        <span>7 أيام / 6 ليالي</span>
+                        <span>الإمارات</span>
+                    </div>
+                    <p>اكتشف مدينة المستقبل مع زيارة برج خليفة، دبي مول، وجزر النخيل الاصطناعية.</p>
+                    <div class="tour-price">$1,800</div>
+                    <a href="booking.html" class="btn">احجز الآن</a>
+                </div>
+            </div>
+
+            <!-- رحلة 3 -->
+            <div class="tour-card">
+                <div class="tour-image">
+                    <img src="https://images.unsplash.com/photo-1533929736458-ca588d08c8be?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="باريس">
+                </div>
+                <div class="tour-info">
+                    <h3>رحلة إلى باريس</h3>
+                    <div class="tour-meta">
+                        <span>8 أيام / 7 ليالي</span>
+                        <span>فرنسا</span>
+                    </div>
+                    <p>عاصمة النور تنتظرك! جولة شاملة تشمل برج إيفل، متحف اللوفر، وقصر فرساي.</p>
+                    <div class="tour-price">$2,500</div>
+                    <a href="booking.html" class="btn">احجز الآن</a>
+                </div>
+            </div>
+
+            <!-- رحلة 4 -->
+            <div class="tour-card">
+                <div class="tour-image">
+                    <img src="https://images.unsplash.com/photo-1527631746610-bca00a040d60?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="ماليزيا">
+                </div>
+                <div class="tour-info">
+                    <h3>رحلة إلى ماليزيا</h3>
+                    <div class="tour-meta">
+                        <span>10 أيام / 9 ليالي</span>
+                        <span>ماليزيا</span>
+                    </div>
+                    <p>تجربة آسيوية فريدة بين كوالالمبور الحديثة وجزيرة لنكاوي الساحرة.</p>
+                    <div class="tour-price">$2,200</div>
+                    <a href="booking.html" class="btn">احجز الآن</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- تذييل الصفحة -->
+    <footer>
+        <p>© 2023 شركة الرحلات السياحية. جميع الحقوق محفوظة.</p>
+        <p>تواصل معنا: info@travelcompany.com | هاتف: 0123456789</p>
+    </footer>
+</body>
+</html>

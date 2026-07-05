@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>خطأ 404 - الصفحة غير موجودة</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; /* تأكد أن الصفحة تملأ الارتفاع الكامل للعرض */
+            margin: 0;
+            direction: rtl; /* لدعم اللغة العربية من اليمين لليسار */
+            text-align: center;
+            color: #333;
+        }
+
+        .error-container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 600px;
+        }
+
+        .error-container h1 {
+            font-size: 80px;
+            color: #dc3545; /* لون أحمر للإشارة إلى الخطأ */
+            margin-bottom: 20px;
+        }
+
+        .error-container h2 {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .error-container p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .error-container .links {
+            margin-top: 30px;
+        }
+
+        .error-container .links a {
+            display: inline-block;
+            background-color: #007bff;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 16px;
+            margin: 0 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .error-container .links a:hover {
+            background-color: #0056b3;
+        }
+
+        /* زر البحث يمكن أن يكون بلون مختلف */
+        .error-container .links a.search-button {
+            background-color: #28a745; /* لون أخضر للبحث */
+        }
+
+        .error-container .links a.search-button:hover {
+            background-color: #218838;
+        }
+
+        /* حقل البحث إذا أردت إضافته */
+        .search-form {
+            margin-top: 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .search-form input[type="text"] {
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: 70%;
+            max-width: 350px;
+            box-sizing: border-box;
+            text-align: right; /* لمحاذاة النص داخل حقل البحث */
+        }
+
+        .search-form button {
+            background-color: #6c757d;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .search-form button:hover {
+            background-color: #5a6268;
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <h1>404</h1>
+        <h2>عذرًا، الصفحة غير موجودة!</h2>
+        <p>يبدو أن الصفحة التي تبحث عنها قد نُقلت أو حُذفت أو أن الرابط الذي اتبعته غير صحيح.</p>
+
+        <div class="links">
+            <a href="index.html">العودة إلى الصفحة الرئيسية</a>
+            <a href="contact.html">اتصل بنا للمساعدة</a>
+            <a href="sitemap.html" class="search-button">خريطة الموقع</a>
+        </div>
+
+        <form action="/search" method="GET" class="search-form">
+            <input type="text" name="q" placeholder="ابحث في الموقع...">
+            <button type="submit">بحث</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>خريطة الموقع</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            direction: rtl; /* لدعم اللغة العربية من اليمين لليسار */
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 20px auto;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: right; /* محاذاة النص إلى اليمين */
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+            text-align: center; /* عنوان الصفحة يكون في المنتصف */
+        }
+
+        h2 {
+            color: #007bff;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 5px;
+        }
+
+        ul {
+            list-style-type: none; /* إزالة النقاط الافتراضية للقوائم */
+            padding: 0;
+            margin-bottom: 20px;
+        }
+
+        ul li {
+            margin-bottom: 8px;
+        }
+
+        ul li a {
+            color: #555;
+            text-decoration: none;
+            padding: 5px 0;
+            display: inline-block; /* لضمان تطبيق الهامش والحشوة بشكل صحيح */
+            transition: color 0.2s ease;
+        }
+
+        ul li a:hover {
+            color: #007bff;
+            text-decoration: underline;
+        }
+
+        .category-description {
+            font-size: 0.9em;
+            color: #777;
+            margin-bottom: 10px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>خريطة الموقع</h1>
+        <p>هذه الصفحة توفر نظرة عامة شاملة على هيكل موقعنا لمساعدتك في العثور على ما تبحث عنه بسهولة.</p>
+
+        <h2>الصفحات الرئيسية</h2>
+        <ul>
+            <li><a href="index.html">الصفحة الرئيسية</a> <span class="category-description">(نقطة البداية لموقعنا)</span></li>
+            <li><a href="about.html">عنا</a> <span class="category-description">(تعرف على المزيد حول شركتنا/منظمتنا)</span></li>
+            <li><a href="contact.html">اتصل بنا</a> <span class="category-description">(كيفية التواصل معنا)</span></li>
+            <li><a href="privacy-policy.html">سياسة الخصوصية</a> <span class="category-description">(معلومات حول جمع واستخدام البيانات)</span></li>
+            <li><a href="terms-of-service.html">شروط الخدمة</a> <span class="category-description">(القواعد والأحكام لاستخدام موقعنا)</span></li>
+        </ul>
+
+        <h2>صفحات المستخدم</h2>
+        <ul>
+            <li><a href="login.html">تسجيل الدخول</a> <span class="category-description">(سجل الدخول إلى حسابك)</span></li>
+            <li><a href="register.html">إنشاء حساب جديد</a> <span class="category-description">(سجل لإنشاء حساب جديد)</span></li>
+            <li><a href="profile.html">ملفي الشخصي</a> <span class="category-description">(إدارة معلومات حسابك)</span></li>
+            <li><a href="settings.html">الإعدادات</a> <span class="category-description">(تخصيص تجربتك)</span></li>
+            <li><a href="dashboard.html">لوحة التحكم</a> <span class="category-description">(الوصول السريع للميزات الرئيسية بعد تسجيل الدخول)</span></li>
+        </ul>
+
+        <h2>المحتوى والموارد</h2>
+        <ul>
+            <li><a href="blog.html">المدونة</a> <span class="category-description">(مقالات وأخبار حول مواضيع مختلفة)</span>
+                <ul>
+                    <li><a href="blog-category1.html">تصنيف المدونة 1</a></li>
+                    <li><a href="blog-category2.html">تصنيف المدونة 2</a></li>
+                    <li><a href="blog-post-example.html">مثال على مقال المدونة</a></li>
+                </ul>
+            </li>
+            <li><a href="products.html">المنتجات/الخدمات</a> <span class="category-description">(استعرض ما نقدمه)</span>
+                <ul>
+                    <li><a href="product-category1.html">فئة المنتج 1</a></li>
+                    <li><a href="product-category2.html">فئة المنتج 2</a></li>
+                    <li><a href="product-detail-example.html">تفاصيل منتج معين</a></li>
+                </ul>
+            </li>
+            <li><a href="gallery.html">معرض الصور</a> <span class="category-description">(شاهد مجموعتنا من الصور)</span></li>
+            <li><a href="faq.html">الأسئلة الشائعة</a> <span class="category-description">(إجابات على الأسئلة المتداولة)</span></li>
+            <li><a href="support.html">الدعم</a> <span class="category-description">(احصل على المساعدة والدعم)</span></li>
+        </ul>
+
+        <h2>أخرى</h2>
+        <ul>
+            <li><a href="sitemap.html">خريطة الموقع</a> <span class="category-description">(هذه الصفحة)</span></li>
+            <li><a href="404.html">صفحة الخطأ 404</a> <span class="category-description">(صفحة تظهر عند عدم العثور على الصفحة المطلوبة)</span></li>
+        </ul>
+    </div>
+</body>
+</html>

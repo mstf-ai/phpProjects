@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مدونة الرحلات السياحية | نصائح وأخبار السفر</title>
+    <style>
+        /* CSS العام */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        nav {
+            background-color: #34495e;
+            padding: 15px;
+            text-align: center;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+        
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        
+        /* تصاميم خاصة بصفحة المدونة */
+        .blog-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .blog-header p {
+            color: #7f8c8d;
+            font-size: 18px;
+        }
+        
+        .blog-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .blog-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .blog-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .blog-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .blog-card:hover .blog-image img {
+            transform: scale(1.05);
+        }
+        
+        .blog-content {
+            padding: 20px;
+        }
+        
+        .blog-content h3 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 22px;
+        }
+        
+        .blog-meta {
+            display: flex;
+            justify-content: space-between;
+            color: #7f8c8d;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        
+        .blog-excerpt {
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .read-more {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+        
+        .read-more:hover {
+            background-color: #2980b9;
+        }
+        
+        .categories-sidebar {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        
+        .categories-sidebar h3 {
+            margin-top: 0;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+        
+        .category-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .category-list li {
+            margin-bottom: 10px;
+        }
+        
+        .category-list a {
+            color: #2c3e50;
+            text-decoration: none;
+            transition: color 0.3s;
+            display: block;
+            padding: 5px 0;
+        }
+        
+        .category-list a:hover {
+            color: #3498db;
+        }
+        
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+        }
+        
+        .pagination a {
+            color: #2c3e50;
+            padding: 8px 16px;
+            text-decoration: none;
+            border: 1px solid #ddd;
+            margin: 0 4px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        
+        .pagination a.active {
+            background-color: #3498db;
+            color: white;
+            border: 1px solid #3498db;
+        }
+        
+        .pagination a:hover:not(.active) {
+            background-color: #ddd;
+        }
+        
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+        
+        /* تصميم متجاوب */
+        @media (max-width: 768px) {
+            .blog-container {
+                grid-template-columns: 1fr;
+            }
+            
+            nav a {
+                display: block;
+                margin: 10px 0;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- رأس الصفحة -->
+    <header>
+        <h1>مدونة الرحلات السياحية</h1>
+        <p>أحدث المقالات والنصائح حول السفر والسياحة</p>
+    </header>
+
+    <!-- شريط التنقل -->
+    <nav>
+        <a href="index.html">الرئيسية</a>
+        <a href="about.html">من نحن</a>
+        <a href="tours.html">الرحلات</a>
+        <a href="booking.html">الحجوزات</a>
+        <a href="blog.html">المدونة</a>
+        <a href="contact.html">اتصل بنا</a>
+    </nav>
+
+    <!-- محتوى الصفحة -->
+    <div class="container">
+        <div class="blog-header">
+            <h2>آخر المقالات والنصائح السياحية</h2>
+            <p>استكشف مقالاتنا المفيدة حول الوجهات السياحية ونصائح السفر</p>
+        </div>
+        
+        <div class="categories-sidebar">
+            <h3>تصنيفات المدونة</h3>
+            <ul class="category-list">
+                <li><a href="#">نصائح السفر <span>(12)</span></a></li>
+                <li><a href="#">وجهات سياحية <span>(8)</span></a></li>
+                <li><a href="#">تأشيرات السفر <span>(5)</span></a></li>
+                <li><a href="#">عروض خاصة <span>(7)</span></a></li>
+                <li><a href="#">أخبار السياحة <span>(10)</span></a></li>
+            </ul>
+        </div>
+        
+        <div class="blog-container">
+            <!-- مقال 1 -->
+            <div class="blog-card">
+                <div class="blog-image">
+                    <img src="https://images.unsplash.com/photo-1503917988258-f87a78e3c995?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="نصائح السفر إلى تركيا">
+                </div>
+                <div class="blog-content">
+                    <div class="blog-meta">
+                        <span><i class="far fa-calendar-alt"></i> 15 يونيو 2023</span>
+                        <span><i class="far fa-eye"></i> 1,245 مشاهدات</span>
+                    </div>
+                    <h3>أفضل 10 نصائح للسفر إلى تركيا في الصيف</h3>
+                    <p class="blog-excerpt">اكتشف أهم النصائح التي تحتاجها لرحلة ممتعة إلى تركيا خلال فصل الصيف، بما في ذلك أفضل الأوقات لزيارة المعالم وتجنب الازدحام.</p>
+                    <a href="blog-post.html" class="read-more">قراءة المزيد</a>
+                </div>
+            </div>
+            
+            <!-- مقال 2 -->
+            <div class="blog-card">
+                <div class="blog-image">
+                    <img src="https://images.unsplash.com/photo-1518684079-3c830dcef090?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="دبي">
+                </div>
+                <div class="blog-content">
+                    <div class="blog-meta">
+                        <span><i class="far fa-calendar-alt"></i> 5 يونيو 2023</span>
+                        <span><i class="far fa-eye"></i> 2,103 مشاهدات</span>
+                    </div>
+                    <h3>دليل شامل لزيارة دبي على الميزانية</h3>
+                    <p class="blog-excerpt">كيف تستمتع بدبي دون إنفاق الكثير؟ إليك أفضل النصائح لتجربة فندقية وترفيهية رائعة بأسعار معقولة في مدينة الذهب.</p>
+                    <a href="blog-post.html" class="read-more">قراءة المزيد</a>
+                </div>
+            </div>
+            
+            <!-- مقال 3 -->
+            <div class="blog-card">
+                <div class="blog-image">
+                    <img src="https://images.unsplash.com/photo-1527631746610-bca00a040d60?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="ماليزيا">
+                </div>
+                <div class="blog-content">
+                    <div class="blog-meta">
+                        <span><i class="far fa-calendar-alt"></i> 22 مايو 2023</span>
+                        <span><i class="far fa-eye"></i> 1,876 مشاهدات</span>
+                    </div>
+                    <h3>ماليزيا في 10 أيام: رحلة بين الثقافة والطبيعة</h3>
+                    <p class="blog-excerpt">برنامج سياحي متكامل لزيارة أهم معالم ماليزيا في رحلة واحدة تشمل كوالالمبور، بينانج، لنكاوي وكاميرون هايلاندز.</p>
+                    <a href="blog-post.html" class="read-more">قراءة المزيد</a>
+                </div>
+            </div>
+            
+            <!-- مقال 4 -->
+            <div class="blog-card">
+                <div class="blog-image">
+                    <img src="https://images.unsplash.com/photo-1533929736458-ca588d08c8be?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="باريس">
+                </div>
+                <div class="blog-content">
+                    <div class="blog-meta">
+                        <span><i class="far fa-calendar-alt"></i> 10 مايو 2023</span>
+                        <span><i class="far fa-eye"></i> 3,421 مشاهدات</span>
+                    </div>
+                    <h3>أجمل 5 أماكن غير تقليدية في باريس</h3>
+                    <p class="blog-excerpt">اكتشف الجانب المختلف من باريس بعيداً عن الزحام السياحي. أماكن ساحرة لا يعرفها إلا القليل من الزوار.</p>
+                    <a href="blog-post.html" class="read-more">قراءة المزيد</a>
+                </div>
+            </div>
+            
+            <!-- مقال 5 -->
+            <div class="blog-card">
+                <div class="blog-image">
+                    <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="تأشيرات">
+                </div>
+                <div class="blog-content">
+                    <div class="blog-meta">
+                        <span><i class="far fa-calendar-alt"></i> 28 أبريل 2023</span>
+                        <span><i class="far fa-eye"></i> 2,987 مشاهدات</span>
+                    </div>
+                    <h3>كل ما تحتاج معرفته عن تأشيرة شنغن للسعوديين</h3>
+                    <p class="blog-excerpt">دليل مفصل لخطوات استخراج تأشيرة شنغن، المستندات المطلوبة، ومدة المعالجة لمواطني المملكة العربية السعودية.</p>
+                    <a href="blog-post.html" class="read-more">قراءة المزيد</a>
+                </div>
+            </div>
+            
+            <!-- مقال 6 -->
+            <div class="blog-card">
+                <div class="blog-image">
+                    <img src="https://images.unsplash.com/photo-1506197603052-3cc9c3a201bd?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="حزم السفر">
+                </div>
+                <div class="blog-content">
+                    <div class="blog-meta">
+                        <span><i class="far fa-calendar-alt"></i> 15 أبريل 2023</span>
+                        <span><i class="far fa-eye"></i> 1,542 مشاهدات</span>
+                    </div>
+                    <h3>كيف تختار حزمة السفر المناسبة لك؟</h3>
+                    <p class="blog-excerpt">دليل مفصل لاختيار أفضل عروض الرحلات بين الحزم الشاملة والرحلات المخصصة حسب احتياجاتك وميزانيتك.</p>
+                    <a href="blog-post.html" class="read-more">قراءة المزيد</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="pagination">
+            <a href="#">&laquo;</a>
+            <a href="#" class="active">1</a>
+            <a href="#">2</a>
+            <a href="#">3</a>
+            <a href="#">4</a>
+            <a href="#">5</a>
+            <a href="#">&raquo;</a>
+        </div>
+    </div>
+
+    <!-- تذييل الصفحة -->
+    <footer>
+        <p>© 2023 شركة الرحلات السياحية. جميع الحقوق محفوظة.</p>
+        <p>تواصل معنا: info@travelcompany.com | هاتف: 0123456789</p>
+    </footer>
+</body>
+</html>

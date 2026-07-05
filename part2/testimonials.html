@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>آراء العملاء | شركة السفر المثالية</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #f8f9fa;
+            --dark: #343a40;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, var(--primary), #1a252f);
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .navbar {
+            background-color: var(--primary);
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+        }
+        
+        .nav-links a:hover {
+            background-color: var(--secondary);
+            transform: translateY(-2px);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        
+        .page-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .page-title h1 {
+            color: var(--primary);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .page-title p {
+            color: #666;
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* تصاميم آراء العملاء */
+        .testimonials-section {
+            margin-bottom: 4rem;
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .testimonial-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            padding: 2rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        .testimonial-card::before {
+    content: "\""; /* استخدام رمز الاقتباس بشكل صحيح */
+    font-family: Georgia, serif;
+    font-size: 5rem;
+    color: rgba(52, 152, 219, 0.1);
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    line-height: 1;
+}
+        .testimonial-content {
+            position: relative;
+            z-index: 1;
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+        
+        .testimonial-meta {
+            display: flex;
+            align-items: center;
+            margin-top: 1.5rem;
+        }
+        
+        .client-avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-left: 1.5rem;
+            border: 3px solid var(--secondary);
+        }
+        
+        .client-info h4 {
+            margin: 0;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+        
+        .client-info p {
+            margin: 0.3rem 0 0;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .rating {
+            color: #f39c12;
+            margin-top: 0.5rem;
+        }
+        
+        .rating i {
+            margin-left: 0.2rem;
+        }
+        
+        /* قسم الفيديوهات */
+        .video-testimonials {
+            margin: 4rem 0;
+        }
+        
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .video-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        
+        .video-thumbnail {
+            position: relative;
+            height: 200px;
+            background-color: #eee;
+        }
+        
+        .video-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .play-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background-color: rgba(255,255,255,0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .play-btn:hover {
+            background-color: var(--secondary);
+            color: white;
+        }
+        
+        .play-btn i {
+            font-size: 1.5rem;
+        }
+        
+        .video-info {
+            padding: 1.5rem;
+        }
+        
+        .video-info h3 {
+            margin: 0 0 0.5rem;
+            color: var(--primary);
+        }
+        
+        .video-info p {
+            margin: 0;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        /* قسم إضافة رأي */
+        .add-testimonial {
+            background: linear-gradient(135deg, var(--secondary), #2980b9);
+            color: white;
+            padding: 3rem 2rem;
+            border-radius: 10px;
+            text-align: center;
+            margin: 4rem 0;
+        }
+        
+        .add-testimonial h2 {
+            margin-bottom: 1rem;
+            font-size: 2rem;
+        }
+        
+        .add-testimonial p {
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            font-size: 1.1rem;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            min-width: 200px;
+        }
+        
+        .btn-white {
+            background-color: white;
+            color: var(--secondary);
+        }
+        
+        .btn-white:hover {
+            background-color: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        /* التذييل */
+        .footer {
+            background: linear-gradient(135deg, var(--primary), #1a252f);
+            color: white;
+            padding: 3rem 1rem;
+            text-align: center;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .copyright {
+            margin-top: 1.5rem;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.5rem;
+            }
+            
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .page-title h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- رأس الصفحة -->
+    <header class="header">
+        <h1>شركة السفر المثالية</h1>
+        <p>تجارب سفر استثنائية تخلد في الذاكرة</p>
+    </header>
+
+    <!-- شريط التنقل -->
+    <nav class="navbar">
+        <div class="nav-links">
+            <a href="index.html">الرئيسية</a>
+            <a href="about.html">من نحن</a>
+            <a href="tours.html">الرحلات</a>
+            <a href="testimonials.html">آراء العملاء</a>
+            <a href="contact.html">اتصل بنا</a>
+        </div>
+    </nav>
+
+    <!-- محتوى الصفحة -->
+    <main class="container">
+        <div class="page-title">
+            <h1>آراء عملائنا الكرام</h1>
+            <p>نحن نعتز بثقة عملائنا، وهذه بعض الشهادات والتجارب الحقيقية من مسافرين استمتعوا برحلاتنا</p>
+        </div>
+        
+        <section class="testimonials-section">
+            <div class="testimonials-grid">
+                <!-- رأي 1 -->
+                <article class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>أفضل تجربة سفر في حياتي! كل التفاصيل كانت منظمة بدقة، من لحظة الوصول حتى المغادرة. الفندق كان رائعاً والمواقع التي زرناها كانت مميزة. فريق الشركة كان محترفاً جداً وساعدنا في كل ما نحتاجه.</p>
+                    </div>
+                    <div class="testimonial-meta">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="أحمد محمد" class="client-avatar">
+                        <div class="client-info">
+                            <h4>أحمد محمد</h4>
+                            <p>رحلة إلى تركيا - أكتوبر 2023</p>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- رأي 2 -->
+                <article class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>سافرت مع عائلتي وكانت تجربة رائعة. الأطفال استمتعوا جداً بالأنشطة المخصصة لهم. المرشد السياحي كان لطيفاً ومطلعاً على كل التفاصيل. شكراً لكم على جعل رحلتنا لا تنسى.</p>
+                    </div>
+                    <div class="testimonial-meta">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="سارة عبدالله" class="client-avatar">
+                        <div class="client-info">
+                            <h4>سارة عبدالله</h4>
+                            <p>رحلة إلى ماليزيا - أغسطس 2023</p>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- رأي 3 -->
+                <article class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>رحلة شهر العسل كانت أحلى من الخيال! كل التفاصيل كانت ممتازة من الفنادق الرومانسية إلى الجولات الخاصة. شكراً لفريق الدعم الذي كان متاحاً لمساعدتنا في أي وقت.</p>
+                    </div>
+                    <div class="testimonial-meta">
+                        <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="محمد خالد" class="client-avatar">
+                        <div class="client-info">
+                            <h4>محمد خالد</h4>
+                            <p>رحلة إلى المالديف - يونيو 2023</p>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- رأي 4 -->
+                <article class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>كنا مجموعة أصدقاء وسافرنا إلى دبي. البرنامج كان مليئاً بالمغامرات والأنشطة الممتعة. خاصة رحلة المنطاد وجولة السفاري كانت تجارب فريدة. نوصي بكم بشدة!</p>
+                    </div>
+                    <div class="testimonial-meta">
+                        <img src="https://randomuser.me/api/portraits/women/63.jpg" alt="نورة أحمد" class="client-avatar">
+                        <div class="client-info">
+                            <h4>نورة أحمد</h4>
+                            <p>رحلة إلى دبي - مايو 2023</p>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- رأي 5 -->
+                <article class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>رحلة العمر إلى اليابان! كل شيء كان منظم بشكل رائع. المرشد السياحي كان يتحدث العربية بطلاقة وساعدنا في التعرف على الثقافة اليابانية. خاصة زيارة جبل فوجي وطوكيو ديزني لاند كانت ممتعة جداً.</p>
+                    </div>
+                    <div class="testimonial-meta">
+                        <img src="https://randomuser.me/api/portraits/men/55.jpg" alt="خالد محمود" class="client-avatar">
+                        <div class="client-info">
+                            <h4>خالد محمود</h4>
+                            <p>رحلة إلى اليابان - أبريل 2023</p>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- رأي 6 -->
+                <article class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>سافرت مع والدتي وكانت رحلة باريس رائعة. الفندق كان قريباً من كل المعالم السياحية. شكراً للشركة على مراعاة احتياجاتنا الخاصة وتوفير كرسي متحرك لوالدتي طوال الرحلة.</p>
+                    </div>
+                    <div class="testimonial-meta">
+                        <img src="https://randomuser.me/api/portraits/women/33.jpg" alt="لينا خالد" class="client-avatar">
+                        <div class="client-info">
+                            <h4>لينا خالد</h4>
+                            <p>رحلة إلى باريس - مارس 2023</p>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+        
+        <section class="video-testimonials">
+            <div class="page-title">
+                <h2>تجارب عملائنا بالفيديو</h2>
+                <p>شاهد بنفسك آراء وتجارب مسافرين مع شركة السفر المثالية</p>
+            </div>
+            
+            <div class="video-grid">
+                <!-- فيديو 1 -->
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <img src="https://images.unsplash.com/photo-1527631746610-bca00a040d60?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="رحلة ماليزيا">
+                        <div class="play-btn">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3>تجربة العائلة في ماليزيا</h3>
+                        <p>عائلة أحمد - رحلة أغسطس 2023</p>
+                    </div>
+                </div>
+                
+                <!-- فيديو 2 -->
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <img src="https://images.unsplash.com/photo-1533929736458-ca588d08c8be?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="رحلة باريس">
+                        <div class="play-btn">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3>شهر عسل في باريس</h3>
+                        <p>محمد وسارة - رحلة مايو 2023</p>
+                    </div>
+                </div>
+                
+                <!-- فيديو 3 -->
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <img src="https://images.unsplash.com/photo-1518684079-3c830dcef090?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="رحلة دبي">
+                        <div class="play-btn">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3>مغامرات دبي</h3>
+                        <p>فريق الأصدقاء - رحلة يوليو 2023</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="add-testimonial">
+            <h2>شاركنا تجربتك</h2>
+            <p>ساعد الآخرين في اختيار رحلتهم المثالية من خلال مشاركة تجربتك مع شركة السفر المثالية</p>
+            <a href="contact.html" class="btn btn-white">
+                <i class="fas fa-pen"></i> أضف رأيك
+            </a>
+        </section>
+    </main>
+
+    <!-- تذييل الصفحة -->
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="index.html">الرئيسية</a>
+            <a href="about.html">من نحن</a>
+            <a href="tours.html">الرحلات</a>
+            <a href="testimonials.html">آراء العملاء</a>
+            <a href="contact.html">اتصل بنا</a>
+            <a href="privacy.html">سياسة الخصوصية</a>
+            <a href="terms.html">الشروط والأحكام</a>
+        </div>
+        <p class="copyright">© 2023 شركة السفر المثالية. جميع الحقوق محفوظة.</p>
+    </footer>
+
+    <script>
+        // كود JavaScript لمعالجة الفيديوهات
+        document.querySelectorAll('.play-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                // في التطبيق الحقيقي، يمكنك فتح مشغل فيديو
+                alert('سيتم تشغيل الفيديو. في التطبيق الحقيقي، يمكن استخدام YouTube أو Vimeo player.');
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>باقات الأسعار | شركة السفر المثالية</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #f8f9fa;
+            --dark: #343a40;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, var(--primary), #1a252f);
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .navbar {
+            background-color: var(--primary);
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+        }
+        
+        .nav-links a:hover {
+            background-color: var(--secondary);
+            transform: translateY(-2px);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .page-header h1 {
+            color: var(--primary);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .page-header p {
+            color: #666;
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* تصاميم باقات الأسعار */
+        .pricing-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .pricing-tab {
+            padding: 1rem 2rem;
+            cursor: pointer;
+            font-weight: bold;
+            color: var(--primary);
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+        }
+        
+        .pricing-tab.active {
+            border-bottom: 3px solid var(--secondary);
+            color: var(--secondary);
+        }
+        
+        .pricing-tab:hover:not(.active) {
+            color: var(--secondary);
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .pricing-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .pricing-card.popular {
+            border: 2px solid var(--secondary);
+        }
+        
+        .popular-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: var(--secondary);
+            color: white;
+            padding: 0.3rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            transform: rotate(-5deg);
+        }
+        
+        .pricing-header {
+            padding: 2rem;
+            text-align: center;
+            background-color: var(--light);
+        }
+        
+        .pricing-name {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .pricing-price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+        
+        .pricing-price span {
+            font-size: 1rem;
+            color: #666;
+            font-weight: normal;
+        }
+        
+        .pricing-duration {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .pricing-features {
+            padding: 2rem;
+        }
+        
+        .pricing-features ul {
+            list-style: none;
+        }
+        
+        .pricing-features li {
+            padding: 0.7rem 0;
+            border-bottom: 1px dashed #eee;
+            display: flex;
+            align-items: center;
+        }
+        
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+        
+        .pricing-features i {
+            margin-left: 0.5rem;
+            color: var(--secondary);
+        }
+        
+        .pricing-actions {
+            padding: 0 2rem 2rem;
+            text-align: center;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.8rem 1.8rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+            font-family: 'Tajawal', sans-serif;
+        }
+        
+        .btn-primary {
+            background-color: var(--secondary);
+            color: white;
+            width: 100%;
+        }
+        
+        .btn-primary:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            color: var(--secondary);
+            border: 1px solid var(--secondary);
+            width: 100%;
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--secondary);
+            color: white;
+        }
+        
+        /* قسم الأسئلة الشائعة */
+        .faq-section {
+            margin: 4rem 0;
+        }
+        
+        .faq-item {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            padding: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            color: #666;
+        }
+        
+        .faq-answer p {
+            padding-bottom: 1.5rem;
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+        }
+        
+        /* قسم التواصل */
+        .contact-section {
+            background: linear-gradient(135deg, var(--primary), #1a252f);
+            color: white;
+            padding: 3rem;
+            border-radius: 10px;
+            text-align: center;
+            margin: 4rem 0;
+        }
+        
+        .contact-section h2 {
+            margin-bottom: 1rem;
+        }
+        
+        .contact-section p {
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+        
+        /* التذييل */
+        .footer {
+            background: linear-gradient(135deg, var(--primary), #1a252f);
+            color: white;
+            padding: 3rem 1rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .copyright {
+            margin-top: 1.5rem;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.5rem;
+            }
+            
+            .pricing-tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .page-header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- رأس الصفحة -->
+    <header class="header">
+        <h1>شركة السفر المثالية</h1>
+        <p>باقات أسعار تناسب جميع احتياجاتك السياحية</p>
+    </header>
+
+    <!-- شريط التنقل -->
+    <nav class="navbar">
+        <div class="nav-links">
+            <a href="index.html">الرئيسية</a>
+            <a href="about.html">من نحن</a>
+            <a href="destinations.html">الوجهات</a>
+            <a href="pricing.html">الباقات</a>
+            <a href="offers.html">العروض</a>
+            <a href="contact.html">اتصل بنا</a>
+        </div>
+    </nav>
+
+    <!-- محتوى الصفحة -->
+    <main class="container">
+        <div class="page-header">
+            <h1>باقات الأسعار</h1>
+            <p>اختر الباقة التي تناسبك واستمتع بتجربة سفر استثنائية مع أفضل الخدمات</p>
+        </div>
+        
+        <!-- أقسام الباقات -->
+        <div class="pricing-tabs">
+            <div class="pricing-tab active" data-tab="individual">الأفراد</div>
+            <div class="pricing-tab" data-tab="family">العائلات</div>
+            <div class="pricing-tab" data-tab="corporate">الشركات</div>
+        </div>
+        
+        <!-- باقات الأفراد -->
+        <div class="pricing-content" id="individual-content">
+            <div class="pricing-grid">
+                <!-- الباقة الأساسية -->
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3 class="pricing-name">الباقة الأساسية</h3>
+                        <div class="pricing-price">$499 <span>للفرد</span></div>
+                        <p class="pricing-duration">للرحلات حتى 7 أيام</p>
+                    </div>
+                    <div class="pricing-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> حجز فنادق 3 نجوم</li>
+                            <li><i class="fas fa-check"></i> تذاكر طيران اقتصادية</li>
+                            <li><i class="fas fa-check"></i> تأمين سفر أساسي</li>
+                            <li><i class="fas fa-check"></i> دليل سياحي إلكتروني</li>
+                            <li><i class="fas fa-times"></i> جولات سياحية</li>
+                            <li><i class="fas fa-times"></i> نقل من وإلى المطار</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-actions">
+                        <a href="booking.html?package=basic" class="btn btn-primary">
+                            <i class="fas fa-shopping-cart"></i> احجز الآن
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- الباقة المميزة -->
+                <div class="pricing-card popular">
+                    <div class="popular-badge">الأكثر طلباً</div>
+                    <div class="pricing-header">
+                        <h3 class="pricing-name">الباقة المميزة</h3>
+                        <div class="pricing-price">$799 <span>للفرد</span></div>
+                        <p class="pricing-duration">للرحلات حتى 10 أيام</p>
+                    </div>
+                    <div class="pricing-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> حجز فنادق 4 نجوم</li>
+                            <li><i class="fas fa-check"></i> تذاكر طيران مريحة</li>
+                            <li><i class="fas fa-check"></i> تأمين سفر شامل</li>
+                            <li><i class="fas fa-check"></i> 3 جولات سياحية مجانية</li>
+                            <li><i class="fas fa-check"></i> نقل من وإلى المطار</li>
+                            <li><i class="fas fa-check"></i> دعم على مدار الساعة</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-actions">
+                        <a href="booking.html?package=premium" class="btn btn-primary">
+                            <i class="fas fa-shopping-cart"></i> احجز الآن
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- الباقة الفاخرة -->
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3 class="pricing-name">الباقة الفاخرة</h3>
+                        <div class="pricing-price">$1299 <span>للفرد</span></div>
+                        <p class="pricing-duration">للرحلات حتى 14 يوم</p>
+                    </div>
+                    <div class="pricing-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> حجز فنادق 5 نجوم</li>
+                            <li><i class="fas fa-check"></i> تذاكر طيران درجة رجال الأعمال</li>
+                            <li><i class="fas fa-check"></i> تأمين سفر ممتاز</li>
+                            <li><i class="fas fa-check"></i> جولات سياحية خاصة</li>
+                            <li><i class="fas fa-check"></i> نقل فاخر من وإلى المطار</li>
+                            <li><i class="fas fa-check"></i> مرشد سياحي خاص</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-actions">
+                        <a href="booking.html?package=luxury" class="btn btn-primary">
+                            <i class="fas fa-shopping-cart"></i> احجز الآن
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- باقات العائلات (مخفية بشكل افتراضي) -->
+        <div class="pricing-content" id="family-content" style="display: none;">
+            <div class="pricing-grid">
+                <!-- الباقة العائلية الأساسية -->
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3 class="pricing-name">الباقة العائلية</h3>
+                        <div class="pricing-price">$1799 <span>لعائلة من 4</span></div>
+                        <p class="pricing-duration">للرحلات حتى 7 أيام</p>
+                    </div>
+                    <div class="pricing-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> غرف عائلية بفنادق 4 نجوم</li>
+                            <li><i class="fas fa-check"></i> تذاكر طيران للأطفال مجاناً</li>
+                            <li><i class="fas fa-check"></i> تأمين سفر للعائلة</li>
+                            <li><i class="fas fa-check"></i> 2 جولة سياحية عائلية</li>
+                            <li><i class="fas fa-check"></i> أنشطة ترفيهية للأطفال</li>
+                            <li><i class="fas fa-times"></i> مرشد سياحي خاص</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-actions">
+                        <a href="booking.html?package=family-basic" class="btn btn-primary">
+                            <i class="fas fa-shopping-cart"></i> احجز الآن
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- الباقة العائلية المميزة -->
+                <div class="pricing-card popular">
+                    <div class="popular-badge">الأفضل للأطفال</div>
+                    <div class="pricing-header">
+                        <h3 class="pricing-name">الباقة العائلية المميزة</h3>
+                        <div class="pricing-price">$2499 <span>لعائلة من 4</span></div>
+                        <p class="pricing-duration">للرحلات حتى 10 أيام</p>
+                    </div>
+                    <div class="pricing-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> غرف عائلية بفنادق 5 نجوم</li>
+                            <li><i class="fas fa-check"></i> تذاكر طيران مريحة للجميع</li>
+                            <li><i class="fas fa-check"></i> تأمين سفر شامل</li>
+                            <li><i class="fas fa-check"></i> 4 جولات سياحية عائلية</li>
+                            <li><i class="fas fa-check"></i> دخول مجاني للمنتزهات الترفيهية</li>
+                            <li><i class="fas fa-check"></i> مرشد سياحي خاص</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-actions">
+                        <a href="booking.html?package=family-premium" class="btn btn-primary">
+                            <i class="fas fa-shopping-cart"></i> احجز الآن
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- باقات الشركات (مخفية بشكل افتراضي) -->
+        <div class="pricing-content" id="corporate-content" style="display: none;">
+            <div class="pricing-grid">
+                <!-- باقة الشركات الصغيرة -->
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3 class="pricing-name">باقة الشركات الصغيرة</h3>
+                        <div class="pricing-price">$999 <span>للشخص</span></div>
+                        <p class="pricing-duration">لمجموعات 5-10 أشخاص</p>
+                    </div>
+                    <div class="pricing-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> حجز فنادق 4 نجوم</li>
+                            <li><i class="fas fa-check"></i> تذاكر طيران اقتصادية</li>
+                            <li><i class="fas fa-check"></i> قاعات اجتماعات</li>
+                            <li><i class="fas fa-check"></i> جولات سياحية جماعية</li>
+                            <li><i class="fas fa-times"></i> مرشد سياحي خاص</li>
+                            <li><i class="fas fa-times"></i> برنامج ترفيهي متكامل</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-actions">
+                        <a href="contact.html?package=corporate-small" class="btn btn-outline">
+                            <i class="fas fa-envelope"></i> تواصل معنا
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- باقة الشركات الكبيرة -->
+                <div class="pricing-card popular">
+                    <div class="popular-badge">حلول مخصصة</div>
+                    <div class="pricing-header">
+                        <h3 class="pricing-name">باقة الشركات الكبيرة</h3>
+                        <div class="pricing-price">$1999 <span>للشخص</span></div>
+                        <p class="pricing-duration">لمجموعات أكثر من 10 أشخاص</p>
+                    </div>
+                    <div class="pricing-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> حجز فنادق 5 نجوم</li>
+                            <li><i class="fas fa-check"></i> تذاكر طيران درجة رجال الأعمال</li>
+                            <li><i class="fas fa-check"></i> قاعات مؤتمرات</li>
+                            <li><i class="fas fa-check"></i> برنامج سياحي خاص</li>
+                            <li><i class="fas fa-check"></i> مرشد سياحي خاص</li>
+                            <li><i class="fas fa-check"></i> برنامج ترفيهي متكامل</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-actions">
+                        <a href="contact.html?package=corporate-large" class="btn btn-primary">
+                            <i class="fas fa-envelope"></i> تواصل معنا
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- قسم الأسئلة الشائعة -->
+        <section class="faq-section">
+            <h2 style="margin-bottom: 1.5rem; color: var(--primary); text-align: center;">أسئلة شائعة عن الباقات</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>هل يمكنني تخصيص الباقة حسب احتياجاتي؟</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>نعم، يمكنك تخصيص الباقة عن طريق التواصل مع فريق خدمة العملاء لدينا. نحن نقدم حلولاً مخصصة تناسب جميع الاحتياجات والميزانيات.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>ما هي سياسة الإلغاء أو التعديل؟</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>يمكنك إلغاء أو تعديل الحجز قبل 30 يومًا من موعد الرحلة بدون أي رسوم. للإلغاء خلال 15-30 يومًا، تفرض رسوم بنسبة 25% من قيمة الباقة. للإلغاء خلال أقل من 15 يومًا، تفرض رسوم بنسبة 50%.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>هل تتوفر خيارات دفع متعددة؟</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>نعم، نوفر عدة خيارات دفع تشمل: الدفع بالبطاقات الائتمانية، التحويل البنكي، الدفع عند الاستلام (لمن هم داخل المملكة)، والدفع على أقساط (حسب الشروط والأحكام).</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>هل يمكنني إضافة خدمات إضافية بعد الحجز؟</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>نعم، يمكنك إضافة خدمات إضافية مثل جولات سياحية إضافية، ترقية الغرف، أو خدمات النقل الفاخر عن طريق التواصل مع فريق الدعم لدينا قبل 7 أيام على الأقل من موعد الرحلة.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- قسم التواصل -->
+        <section class="contact-section">
+            <h2>هل لديك استفسارات أخرى؟</h2>
+            <p>فريق خدمة العملاء لدينا مستعد للإجابة على جميع استفساراتك ومساعدتك في اختيار الباقة المثالية لرحلتك</p>
+            <a href="contact.html" class="btn btn-outline" style="background: white; color: var(--primary); font-weight: bold; margin-top: 1rem;">
+                <i class="fas fa-headset"></i> تواصل معنا
+            </a>
+        </section>
+    </main>
+
+    <!-- التذييل -->
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="index.html">الرئيسية</a>
+            <a href="about.html">من نحن</a>
+            <a href="destinations.html">الوجهات</a>
+            <a href="pricing.html">الباقات</a>
+            <a href="offers.html">العروض</a>
+            <a href="contact.html">اتصل بنا</a>
+            <a href="privacy.html">سياسة الخصوصية</a>
+        </div>
+        <p class="copyright">© 2023 شركة السفر المثالية. جميع الحقوق محفوظة.</p>
+    </footer>
+
+    <script>
+        // كود تبديل تبويبات الباقات
+        const tabs = document.querySelectorAll('.pricing-tab');
+        const contents = document.querySelectorAll('.pricing-content');
+        
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // إزالة التنشيط من جميع التبويبات
+                tabs.forEach(t => t.classList.remove('active'));
+                // إخفاء جميع المحتويات
+                contents.forEach(c => c.style.display = 'none');
+                
+                // تفعيل التبويب المحدد
+                tab.classList.add('active');
+                // عرض المحتوى المحدد
+                const tabId = tab.getAttribute('data-tab');
+                document.getElementById(`${tabId}-content`).style.display = 'block';
+            });
+        });
+        
+        // كود الأسئلة الشائعة
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            
+            question.addEventListener('click', () => {
+                // إغلاق جميع الأسئلة الأخرى
+                faqItems.forEach(i => {
+                    if (i !== item) {
+                        i.classList.remove('active');
+                    }
+                });
+                
+                // تبديل الحالة للعنصر الحالي
+                item.classList.toggle('active');
+            });
+        });
+        
+        // تأثيرات عند التمرير
+        document.addEventListener('DOMContentLoaded', function() {
+            const pricingCards = document.querySelectorAll('.pricing-card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            pricingCards.forEach(card => {
+                card.style.opacity = 0;
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'all 0.5s ease';
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>

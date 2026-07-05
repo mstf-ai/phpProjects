@@ -12,10 +12,10 @@
 <body>
   <div class="wrapper">
     <header class="text-danger">Mostafa Form</header>
-    <form action="#">
+    <form action="home.php" method="post">
       <div class="field email">
         <div class="input-area">
-          <input type="text" placeholder="Email Address">
+          <input type="text" placeholder="Email Address" name="username">
           <i class="icon fas fa-envelope"></i>
           <i class="error error-icon fas fa-exclamation-circle"></i>
         </div>
@@ -23,7 +23,7 @@
       </div>
       <div class="field password">
         <div class="input-area">
-          <input type="password" placeholder="Password">
+          <input type="password" placeholder="Password" name="password">
           <i class="icon fas fa-lock"></i>
           <i class="error error-icon fas fa-exclamation-circle"></i>
         </div>

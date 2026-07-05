@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>وجهاتنا السياحية | شركة السفر المثالية</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #f8f9fa;
+            --dark: #343a40;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, var(--primary), #1a252f);
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .navbar {
+            background-color: var(--primary);
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+        }
+        
+        .nav-links a:hover {
+            background-color: var(--secondary);
+            transform: translateY(-2px);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .page-header h1 {
+            color: var(--primary);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .page-header p {
+            color: #666;
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* تصاميم فلتر الوجهات */
+        .filter-section {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .filter-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+        
+        .filter-group {
+            margin-bottom: 1rem;
+        }
+        
+        .filter-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+        
+        .filter-group select, 
+        .filter-group input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Tajawal', sans-serif;
+        }
+        
+        .filter-group select:focus, 
+        .filter-group input:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+        }
+        
+        .filter-actions {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.8rem 1.8rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+            font-family: 'Tajawal', sans-serif;
+        }
+        
+        .btn-primary {
+            background-color: var(--secondary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            color: var(--secondary);
+            border: 1px solid var(--secondary);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--secondary);
+            color: white;
+        }
+        
+        /* تصاميم بطاقات الوجهات */
+        .destinations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .destination-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .destination-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .destination-image {
+            height: 250px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .destination-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .destination-card:hover .destination-image img {
+            transform: scale(1.05);
+        }
+        
+        .destination-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: var(--accent);
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+        
+        .destination-content {
+            padding: 1.5rem;
+        }
+        
+        .destination-content h3 {
+            margin: 0 0 0.5rem;
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+        
+        .destination-location {
+            display: flex;
+            align-items: center;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        
+        .destination-location i {
+            margin-left: 0.5rem;
+            color: var(--secondary);
+        }
+        
+        .destination-description {
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+        
+        .destination-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+        }
+        
+        .destination-price {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--accent);
+        }
+        
+        .destination-price span {
+            font-size: 0.9rem;
+            color: #666;
+            font-weight: normal;
+        }
+        
+        .view-tours {
+            background-color: var(--secondary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+        
+        .view-tours:hover {
+            background-color: var(--primary);
+        }
+        
+        /* قسم التصنيفات */
+        .categories-section {
+            margin: 4rem 0;
+        }
+        
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .category-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        }
+        
+        .category-icon {
+            background-color: var(--light);
+            padding: 2rem;
+            font-size: 2.5rem;
+            color: var(--secondary);
+        }
+        
+        .category-info {
+            padding: 1.5rem;
+        }
+        
+        .category-info h3 {
+            margin: 0 0 0.5rem;
+            color: var(--primary);
+        }
+        
+        .category-info p {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .category-link {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        
+        .category-link:hover {
+            color: var(--primary);
+        }
+        
+        /* التذييل */
+        .footer {
+            background: linear-gradient(135deg, var(--primary), #1a252f);
+            color: white;
+            padding: 3rem 1rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .copyright {
+            margin-top: 1.5rem;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.5rem;
+            }
+            
+            .destinations-grid,
+            .categories-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .filter-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .page-header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- رأس الصفحة -->
+    <header class="header">
+        <h1>شركة السفر المثالية</h1>
+        <p>اكتشف أجمل الوجهات حول العالم</p>
+    </header>
+
+    <!-- شريط التنقل -->
+    <nav class="navbar">
+        <div class="nav-links">
+            <a href="index.html">الرئيسية</a>
+            <a href="about.html">من نحن</a>
+            <a href="destinations.html">الوجهات</a>
+            <a href="tours.html">الرحلات</a>
+            <a href="testimonials.html">آراء العملاء</a>
+            <a href="contact.html">اتصل بنا</a>
+        </div>
+    </nav>
+
+    <!-- محتوى الصفحة -->
+    <main class="container">
+        <div class="page-header">
+            <h1>وجهاتنا السياحية</h1>
+            <p>اكتشف أجمل الوجهات السياحية التي نقدمها واختر رحلتك المثالية</p>
+        </div>
+        
+        <!-- قسم الفلترة -->
+        <section class="filter-section">
+            <h2 style="margin-bottom: 1.5rem; color: var(--primary);">ابحث عن وجهتك المثالية</h2>
+            <form id="destinationFilter">
+                <div class="filter-grid">
+                    <div class="filter-group">
+                        <label for="region">المنطقة</label>
+                        <select id="region">
+                            <option value="">جميع المناطق</option>
+                            <option value="europe">أوروبا</option>
+                            <option value="asia">آسيا</option>
+                            <option value="middle-east">الشرق الأوسط</option>
+                            <option value="africa">أفريقيا</option>
+                            <option value="america">الأمريكتين</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="type">نوع الوجهة</label>
+                        <select id="type">
+                            <option value="">جميع الأنواع</option>
+                            <option value="beach">شواطئ</option>
+                            <option value="mountain">جبال</option>
+                            <option value="city">مدن</option>
+                            <option value="historical">تاريخية</option>
+                            <option value="adventure">مغامرات</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="season">الموسم المفضل</label>
+                        <select id="season">
+                            <option value="">جميع المواسم</option>
+                            <option value="summer">الصيف</option>
+                            <option value="winter">الشتاء</option>
+                            <option value="spring">الربيع</option>
+                            <option value="autumn">الخريف</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="price">نطاق السعر</label>
+                        <select id="price">
+                            <option value="">جميع الأسعار</option>
+                            <option value="budget">اقتصادي (حتى $1000)</option>
+                            <option value="mid-range">متوسط ($1000 - $3000)</option>
+                            <option value="luxury">فاخر (أكثر من $3000)</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="filter-actions">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-search"></i> بحث
+                    </button>
+                    <button type="reset" class="btn btn-outline">
+                        <i class="fas fa-undo"></i> إعادة تعيين
+                    </button>
+                </div>
+            </form>
+        </section>
+        
+        <!-- قسم الوجهات -->
+        <section class="destinations-section">
+            <h2 style="margin-bottom: 1.5rem; color: var(--primary);">أشهر الوجهات</h2>
+            
+            <div class="destinations-grid">
+                <!-- وجهة 1 -->
+                <div class="destination-card">
+                    <div class="destination-image">
+                        <img src="https://images.unsplash.com/photo-1527631746610-bca00a040d60?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="إسطنبول">
+                        <div class="destination-badge">الأكثر طلباً</div>
+                    </div>
+                    <div class="destination-content">
+                        <h3>إسطنبول، تركيا</h3>
+                        <div class="destination-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>عاصمة الثقافة بين الشرق والغرب</span>
+                        </div>
+                        <p class="destination-description">
+                            مدينة ساحرة تجمع بين الأصالة والحداثة، تتميز بمعالمها التاريخية مثل آيا صوفيا والمسجد الأزرق، وأسواقها الشعبية المفعمة بالحيوية.
+                        </p>
+                        <div class="destination-meta">
+                            <div class="destination-price">
+                                $850 <span>للفرد / 7 أيام</span>
+                            </div>
+                            <a href="tours.html?destination=istanbul" class="view-tours">
+                                <i class="fas fa-eye"></i> عرض الرحلات
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- وجهة 2 -->
+                <div class="destination-card">
+                    <div class="destination-image">
+                        <img src="https://images.unsplash.com/photo-1533929736458-ca588d08c8be?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="باريس">
+                    </div>
+                    <div class="destination-content">
+                        <h3>باريس، فرنسا</h3>
+                        <div class="destination-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>عاصمة النور والجمال</span>
+                        </div>
+                        <p class="destination-description">
+                            مدينة الرومانسية والفنون، تشتهر ببرج إيفل ومتحف اللوفر وقصر فرساي. وجهة مثالية لعشاق الثقافة والتسوق الفاخر.
+                        </p>
+                        <div class="destination-meta">
+                            <div class="destination-price">
+                                $1200 <span>للفرد / 5 أيام</span>
+                            </div>
+                            <a href="tours.html?destination=paris" class="view-tours">
+                                <i class="fas fa-eye"></i> عرض الرحلات
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- وجهة 3 -->
+                <div class="destination-card">
+                    <div class="destination-image">
+                        <img src="https://images.unsplash.com/photo-1518684079-3c830dcef090?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="دبي">
+                        <div class="destination-badge">عرض خاص</div>
+                    </div>
+                    <div class="destination-content">
+                        <h3>دبي، الإمارات</h3>
+                        <div class="destination-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>مدينة المستقبل</span>
+                        </div>
+                        <p class="destination-description">
+                            واجهة سياحية فريدة تجمع بين ناطحات السحاب الحديثة والصحراء الذهبية. تشمل معالمها برج خليفة وجزر النخيل ومدينة دبي للألعاب.
+                        </p>
+                        <div class="destination-meta">
+                            <div class="destination-price">
+                                $950 <span>للفرد / 6 أيام</span>
+                            </div>
+                            <a href="tours.html?destination=dubai" class="view-tours">
+                                <i class="fas fa-eye"></i> عرض الرحلات
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- وجهة 4 -->
+                <div class="destination-card">
+                    <div class="destination-image">
+                        <img src="https://images.unsplash.com/photo-1503917988258-f87a78e3c995?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="ماليزيا">
+                    </div>
+                    <div class="destination-content">
+                        <h3>كوالالمبور، ماليزيا</h3>
+                        <div class="destination-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>لؤلؤة آسيا</span>
+                        </div>
+                        <p class="destination-description">
+                            مدينة متعددة الثقافات تتميز ببرجي بتروناس التوأم والحدائق الخلابة. تشمل رحلاتها زيارة لنكاوي وكاميرون هايلاندز.
+                        </p>
+                        <div class="destination-meta">
+                            <div class="destination-price">
+                                $1100 <span>للفرد / 8 أيام</span>
+                            </div>
+                            <a href="tours.html?destination=kuala-lumpur" class="view-tours">
+                                <i class="fas fa-eye"></i> عرض الرحلات
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- وجهة 5 -->
+                <div class="destination-card">
+                    <div class="destination-image">
+                        <img src="https://images.unsplash.com/photo-1506197603052-3cc9c3a201bd?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="روما">
+                    </div>
+                    <div class="destination-content">
+                        <h3>روما، إيطاليا</h3>
+                        <div class="destination-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>المدينة الخالدة</span>
+                        </div>
+                        <p class="destination-description">
+                            عاصمة الإمبراطورية الرومانية، تشتهر بمعالمها التاريخية مثل الكولوسيوم ونافورة تريفي والفاتيكان. وجهة مثالية لعشاق التاريخ والطعام الإيطالي.
+                        </p>
+                        <div class="destination-meta">
+                            <div class="destination-price">
+                                $1350 <span>للفرد / 7 أيام</span>
+                            </div>
+                            <a href="tours.html?destination=rome" class="view-tours">
+                                <i class="fas fa-eye"></i> عرض الرحلات
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- وجهة 6 -->
+                <div class="destination-card">
+                    <div class="destination-image">
+                        <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="اليونان">
+                        <div class="destination-badge">جديد</div>
+                    </div>
+                    <div class="destination-content">
+                        <h3>سانتوريني، اليونان</h3>
+                        <div class="destination-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>جزيرة الأحلام</span>
+                        </div>
+                        <p class="destination-description">
+                            جزيرة ساحرة تشتهر بمنازلها البيضاء والقباب الزرقاء المطلة على بحر إيجة. وجهة رومانسية مثالية لشهر العسل والاسترخاء.
+                        </p>
+                        <div class="destination-meta">
+                            <div class="destination-price">
+                                $1500 <span>للفرد / 6 أيام</span>
+                            </div>
+                            <a href="tours.html?destination=santorini" class="view-tours">
+                                <i class="fas fa-eye"></i> عرض الرحلات
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- قسم تصنيفات الوجهات -->
+        <section class="categories-section">
+            <h2 style="margin-bottom: 1.5rem; color: var(--primary);">تصنيفات الوجهات</h2>
+            <p style="text-align: center; color: #666; max-width: 700px; margin: 0 auto 2rem;">
+                اختر وجهتك حسب نوع الرحلة التي تبحث عنها
+            </p>
+            
+            <div class="categories-grid">
+                <!-- تصنيف 1 -->
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-umbrella-beach"></i>
+                    </div>
+                    <div class="category-info">
+                        <h3>رحلة شاطئية</h3>
+                        <p>استمتع بأجمل الشواطئ والمنتجعات الساحلية حول العالم</p>
+                        <a href="tours.html?type=beach" class="category-link">
+                            عرض الوجهات <i class="fas fa-arrow-left"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- تصنيف 2 -->
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-mountain"></i>
+                    </div>
+                    <div class="category-info">
+                        <h3>رحلات جبلية</h3>
+                        <p>اكتشف جمال الطبيعة الخلابة في أعلى القمم والمنتجعات الجبلية</p>
+                        <a href="tours.html?type=mountain" class="category-link">
+                            عرض الوجهات <i class="fas fa-arrow-left"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- تصنيف 3 -->
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-city"></i>
+                    </div>
+                    <div class="category-info">
+                        <h3>جولات مدنية</h3>
+                        <p>استكشف أشهر المدن العالمية وثقافاتها المتنوعة</p>
+                        <a href="tours.html?type=city" class="category-link">
+                            عرض الوجهات <i class="fas fa-arrow-left"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- تصنيف 4 -->
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-landmark"></i>
+                    </div>
+                    <div class="category-info">
+                        <h3>رحلات تاريخية</h3>
+                        <p>تعرف على الحضارات القديمة وأشهر المعالم الأثرية</p>
+                        <a href="tours.html?type=historical" class="category-link">
+                            عرض الوجهات <i class="fas fa-arrow-left"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- تذييل الصفحة -->
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="index.html">الرئيسية</a>
+            <a href="about.html">من نحن</a>
+            <a href="destinations.html">الوجهات</a>
+            <a href="tours.html">الرحلات</a>
+            <a href="testimonials.html">آراء العملاء</a>
+            <a href="contact.html">اتصل بنا</a>
+            <a href="privacy.html">سياسة الخصوصية</a>
+        </div>
+        <p class="copyright">© 2023 شركة السفر المثالية. جميع الحقوق محفوظة.</p>
+    </footer>
+
+    <script>
+        // كود JavaScript للفلترة
+        document.getElementById('destinationFilter').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // جلب قيم الفلتر
+            const region = document.getElementById('region').value;
+            const type = document.getElementById('type').value;
+            const season = document.getElementById('season').value;
+            const price = document.getElementById('price').value;
+            
+            // هنا يمكنك إضافة كود لفلترة الوجهات
+            alert('سيتم تطبيق عوامل الفلترة المحددة. في التطبيق الحقيقي، سيتم فلترة البطاقات أو جلب بيانات جديدة من الخادم.');
+            
+            // مثال بسيط لإخفاء البطاقات التي لا تطابق الفلتر
+            document.querySelectorAll('.destination-card').forEach(card => {
+                card.style.display = 'block'; // إعادة عرض جميع البطاقات أولاً
+                
+                // يمكنك إضافة شروط الفلترة هنا
+                // if(...) { card.style.display = 'none'; }
+            });
+        });
+        
+        // إعادة تعيين الفلتر
+        document.getElementById('destinationFilter').addEventListener('reset', function() {
+            document.querySelectorAll('.destination-card').forEach(card => {
+                card.style.display = 'block';
+            });
+        });
+    </script>
+</body>
+</html>

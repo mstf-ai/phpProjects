@@ -1,0 +1,49 @@
+/* guides-style.css */
+
+body {
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(to right, #e0f7fa, #ffffff);
+  direction: rtl;
+  color: #333;
+  padding: 20px;
+  text-align: center;
+}
+
+header {
+  background-color: #004d40;
+  color: white;
+  padding: 40px 20px;
+  border-radius: 10px;
+}
+
+.guides-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.guide-card {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  padding: 20px;
+  width: 250px;
+  transition: transform 0.3s;
+}
+
+.guide-card:hover {
+  transform: translateY(-10px);
+}
+
+.guide-card img {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.guide-card h3 {
+  color: #00796b;
+  margin-bottom: 10px;
+}

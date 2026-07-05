@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>شركة الرحلات السياحية | الأسئلة الشائعة</title>
+    <style>
+        /* CSS العام */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        nav {
+            background-color: #34495e;
+            padding: 15px;
+            text-align: center;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+        
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        
+        /* تصاميم خاصة بصفحة الأسئلة الشائعة */
+        .faq-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .faq-header p {
+            color: #7f8c8d;
+            font-size: 18px;
+        }
+        
+        .faq-container {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .faq-item {
+            border-bottom: 1px solid #eee;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+        
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        
+        .faq-question:hover {
+            color: #3498db;
+        }
+        
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            color: #666;
+            line-height: 1.7;
+        }
+        
+        .faq-answer p {
+            margin-top: 15px;
+            padding-right: 20px;
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+        }
+        
+        .faq-icon {
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+        
+        .contact-promo {
+            background-color: #3498db;
+            color: white;
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 40px;
+        }
+        
+        .contact-promo a {
+            color: white;
+            text-decoration: underline;
+        }
+        
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+        
+        /* تصميم متجاوب */
+        @media (max-width: 768px) {
+            nav a {
+                display: block;
+                margin: 10px 0;
+            }
+            
+            .faq-question {
+                font-size: 16px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- رأس الصفحة -->
+    <header>
+        <h1>الأسئلة الشائعة</h1>
+        <p>ابحث عن إجابات لأسئلتك هنا</p>
+    </header>
+
+    <!-- شريط التنقل -->
+    <nav>
+        <a href="index.html">الرئيسية</a>
+        <a href="about.html">من نحن</a>
+        <a href="tours.html">الرحلات</a>
+        <a href="booking.html">الحجوزات</a>
+        <a href="contact.html">اتصل بنا</a>
+        <a href="faq.html">الأسئلة الشائعة</a>
+    </nav>
+
+    <!-- محتوى الصفحة -->
+    <div class="container">
+        <div class="faq-header">
+            <h2>كيف يمكننا مساعدتك؟</h2>
+            <p>لدينا إجابات لأسئلتك الأكثر شيوعاً حول خدماتنا وعمليات الحجز</p>
+        </div>
+        
+        <div class="faq-container">
+            <!-- سؤال 1 -->
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>كيف يمكنني حجز رحلة؟</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>يمكنك حجز رحلة بسهولة عبر موقعنا الإلكتروني عن طريق:</p>
+                    <ol>
+                        <li>اختيار الرحلة المناسبة من صفحة "الرحلات"</li>
+                        <li>تحديد تاريخ السفر وعدد الأشخاص</li>
+                        <li>ملء معلومات الحجز الشخصية</li>
+                        <li>إتمام عملية الدفع</li>
+                    </ol>
+                    <p>سيصلك تأكيد الحجز على بريدك الإلكتروني خلال دقائق.</p>
+                </div>
+            </div>
+            
+            <!-- سؤال 2 -->
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>ما هي طرق الدفع المتاحة؟</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>نحن نقبل عدة طرق دفع لتسهيل العملية عليك:</p>
+                    <ul>
+                        <li>بطاقات الائتمان (فيزا، ماستركارد)</li>
+                        <li>حوالة بنكية</li>
+                        <li>الدفع عند الاستلام (لمن هم داخل المملكة فقط)</li>
+                        <li>أنظمة الدفع الإلكتروني (Apple Pay, PayPal)</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- سؤال 3 -->
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>هل يمكنني إلغاء أو تعديل الحجز؟</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>نعم، يمكنك إلغاء أو تعديل الحجز وفق الشروط التالية:</p>
+                    <ul>
+                        <li>قبل 30 يومًا من موعد الرحلة: استرداد كامل المبلغ</li>
+                        <li>من 15 إلى 29 يومًا قبل الرحلة: استرداد 50% من المبلغ</li>
+                        <li>أقل من 15 يومًا: لا يوجد استرداد</li>
+                    </ul>
+                    <p>للتعديلات، يرجى الاتصال بفريق خدمة العملاء على الرقم 920000000.</p>
+                </div>
+            </div>
+            
+            <!-- سؤال 4 -->
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>ما هي المستندات المطلوبة للسفر؟</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>المستندات المطلوبة تختلف حسب الوجهة، ولكن بشكل عام ستحتاج إلى:</p>
+                    <ul>
+                        <li>جواز سفر ساري المفعول (6 أشهر على الأقل)</li>
+                        <li>تأشيرة دخول إن لزم الأمر</li>
+                        <li>شهادة التطعيم إذا كانت مطلوبة</li>
+                        <li>نسخة من تأكيد الحجز</li>
+                    </ul>
+                    <p>سيتم إعلامك بجميع المتطلبات عند الحجز.</p>
+                </div>
+            </div>
+            
+            <!-- سؤال 5 -->
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>هل تقدمون رحلات مخصصة للمجموعات؟</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>نعم، نقدم رحلات مخصصة للمجموعات والعائلات والشركات مع المميزات التالية:</p>
+                    <ul>
+                        <li>تخصيص البرنامج حسب رغباتك</li>
+                        <li>مرشد سياحي خاص</li>
+                        <li>خصومات خاصة للمجموعات الكبيرة</li>
+                        <li>تنسيق مواصلات خاصة</li>
+                    </ul>
+                    <p>لطلب رحلة مخصصة، يرجى التواصل معنا عبر <a href="contact.html">صفحة الاتصال</a>.</p>
+                </div>
+            </div>
+            
+            <!-- سؤال 6 -->
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>ما هي سياسة الأطفال في الرحلات؟</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>سياسة الأطفال لدينا كالتالي:</p>
+                    <ul>
+                        <li>الأطفال دون سن السنتين: مجانًا (بدون سرير)</li>
+                        <li>من 2 إلى 6 سنوات: 25% من سعر الشخص البالغ</li>
+                        <li>من 6 إلى 12 سنة: 50% من سعر الشخص البالغ</li>
+                        <li>فوق 12 سنة: سعر كامل</li>
+                    </ul>
+                    <p>بعض الفنادق قد تختلف سياستها، وسيتم إعلامك عند الحجز.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="contact-promo">
+            <h3>لم تجد إجابتك؟</h3>
+            <p>فريق خدمة العملاء لدينا مستعد لمساعدتك على مدار الساعة. <a href="contact.html">اتصل بنا الآن</a> أو راسلنا عبر الواتساب على الرقم 0500000000</p>
+        </div>
+    </div>
+
+    <!-- تذييل الصفحة -->
+    <footer>
+        <p>© 2023 شركة الرحلات السياحية. جميع الحقوق محفوظة.</p>
+        <p>تواصل معنا: info@travelcompany.com | هاتف: 0123456789</p>
+    </footer>
+
+    <script>
+        // JavaScript للأسئلة الشائعة
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentNode;
+                item.classList.toggle('active');
+                
+                // إغلاق الإجابات الأخرى عند فتح إجابة جديدة
+                if (item.classList.contains('active')) {
+                    document.querySelectorAll('.faq-item').forEach(otherItem => {
+                        if (otherItem !== item && otherItem.classList.contains('active')) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
