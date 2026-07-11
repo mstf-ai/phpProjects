@@ -53,7 +53,34 @@ echo "<br>";
 // $name="value"; do{do some action} while($name <= "value");
 
 // 10--- for loop --- //
-// 
+// for($name = "value"; $name <= "target"; $name++){do some action}
+
+// 11--- foreach loop --- //
+/*
+    $i= array("القاهرة", "الجيزة", "الاسكندرية", "المنصورة");
+
+    foreach($i as $x){
+        echo "<option>".$x."</option>";
+    }
+*/
+
+// 12--- indexed array --- //
+/* 
+$i= array("السباحة", "قرة القدم", "القراءة", "الكتابة");
+
+echo $i["0"];
+
+// ******in an other way******** //
+$i["0"]= "القاهرة";
+$i["1"]= "الجيزة";
+$i["2"]= "الاسكندرية";
+$i["3"]= "اسوان";
+
+echo $i["2"];
+*/
+
+// 13--- Associative array --- //
+//
 
 ?>
 
