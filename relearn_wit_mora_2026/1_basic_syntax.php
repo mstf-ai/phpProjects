@@ -14,7 +14,7 @@ $Name = "مطور محترف";
 // 4. قم بطباعة المتغير الثاني ($Name) ولكن اكتبه بحروف صغيرة ($name)
 // شاهد الخطأ الذي سيظهر لك في الـ Terminal واقرأه جيدًا.
 
-ECHO $name." ".$Name."<br>"."\n thanks Gemini";
+ECHO $name." ".$Name."\n thanks Gemini";
 
 
 ?>
