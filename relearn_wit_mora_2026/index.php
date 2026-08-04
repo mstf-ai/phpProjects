@@ -53,7 +53,9 @@ echo "<br>";
 // $name="value"; do{do some action} while($name <= "value");
 
 // 10--- for loop --- //
-// for($name = "value"; $name <= "target"; $name++){do some action}
+// for($name = "value"; $name <= "target"; $name++){
+// do some action
+// }
 
 // 11--- foreach loop --- //
 /*
@@ -80,7 +82,31 @@ echo $i["2"];
 */
 
 // 13--- Associative array --- //
-//
+// ******first way******** //
+/*
+$age = array("Samir"=>30, "Ahmed"=>28, "Ali"=>19);
+echo $age["Ali"];
+*/
+// ******in an other way******** //
+/*
+$age["Samir"] = 30;
+$age["Ahmed"] = 28;
+$age["Ali"] = 19;
+echo $age["Samir"];
+*/
+
+// 14--- Multidimensional array --- //
+/*
+$users = array(
+    array("Samir", "mansora", 30),
+    array("Ahmed", "cairo", 38),
+    array("Ali", "alexandria", 55)
+);
+echo $users[0][0]." => ".$users[0][1]." => ".$users[0][2];
+*/
+
+// 14--- Multidimensional array --- //
+// 
 
 ?>
 
