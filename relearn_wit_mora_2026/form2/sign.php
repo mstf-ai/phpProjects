@@ -14,7 +14,7 @@
     <form action="../index.php" method="post">
       <div class="field email">
         <div class="input-area">
-          <input type="text" placeholder="Email Address">
+          <input type="text" name="username" placeholder="Email Address">
           <i class="icon fas fa-envelope"></i>
           <i class="error error-icon fas fa-exclamation-circle"></i>
         </div>
@@ -22,7 +22,7 @@
       </div>
       <div class="field password">
         <div class="input-area">
-          <input type="password" placeholder="Password">
+          <input type="password" name="password" placeholder="Password">
           <i class="icon fas fa-lock"></i>
           <i class="error error-icon fas fa-exclamation-circle"></i>
         </div>

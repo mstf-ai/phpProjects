@@ -105,9 +105,17 @@ $users = array(
 echo $users[0][0]." => ".$users[0][1]." => ".$users[0][2];
 */
 
-// 14--- Multidimensional array --- //
-// 
+// 15--- Form Login --"form2/sign.php"-- //
+// 1- POST method.
+
+echo "<hr>".'<br>';
+$username=$_GET["username"];
+
+$password=$_GET["password"];
+
+echo $username. "<br>";
+echo $password. "<br>";
 
 ?>
 
-<?= '<br> print this string' ?>
+<?= "<hr> Hello world again." ?>
