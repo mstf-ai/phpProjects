@@ -18,22 +18,22 @@
 // echo "Connected successfully";
 
 // *************** Better modern way ****************** //
-// // إعدادات الاتصال
-// $localhost = "localhost";
-// $username  = "root";
-// $password  = "";
-// $dbname    = "mora_php_training";
+// إعدادات الاتصال
+define("localhost", "localhost");
+define("username", "root");
+define("password", "");
+define("dbname", "mora_php_training");
 
-// // الطريقة الحديثة والمضمونة لمعالجة الأخطاء في PHP 8+
-// try {
-//     // محاولة الاتصال
-//     $conn = new mysqli($localhost, $username, $password, $dbname);
-//     echo "Connected successfully";
-// } catch (mysqli_sql_exception $e) {
-//     // في حال حدوث أي خطأ في الاتصال، سيتم تنفيذ هذا الجزء تلقائياً
-//     // نستخدم دالة مخصصة لعرض رسالة نظيفة للمستخدم دون كشف تفاصيل السيرفر الحساسة
-//     die("Connection failed: " . $e->getMessage());
-// }
+// الطريقة الحديثة والمضمونة لمعالجة الأخطاء في PHP 8+
+try {
+    // محاولة الاتصال
+    $conn = new mysqli(localhost, username, password, dbname);
+    // echo "Connected successfully";
+} catch (mysqli_sql_exception $e) {
+    // في حال حدوث أي خطأ في الاتصال، سيتم تنفيذ هذا الجزء تلقائياً
+    // نستخدم دالة مخصصة لعرض رسالة نظيفة للمستخدم دون كشف تفاصيل السيرفر الحساسة
+    die("Connection failed: " . $e->getMessage());
+}
 
 // =========================================================== //
 

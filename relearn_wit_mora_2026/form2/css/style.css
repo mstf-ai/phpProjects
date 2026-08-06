@@ -17,6 +17,14 @@ body{
   color: #fff;
   background: #5372F0;
 }
+.signup-body{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e93b3b;
+}
 .wrapper{
   width: 380px;
   padding: 40px 30px 50px 30px;
@@ -139,5 +147,11 @@ form input[type="submit"]{
   transition: all 0.3s ease;
 }
 form input[type="submit"]:hover{
-  background: #2c52ed;
+  background: #6483F0;
+}
+form input[name="signup"]{
+  background: #e93b3b;
+}
+form input[name="signup"]:hover{
+  background: #fa4c4c;
 }

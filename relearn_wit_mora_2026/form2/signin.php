@@ -11,7 +11,7 @@
 <body>
   <div class="wrapper">
     <header>Login Form</header>
-    <form action="../index.php" method="post">
+    <form action="check_user.php" method="post">
       <div class="field email">
         <div class="input-area">
           <input type="text" name="username" placeholder="Email Address">
@@ -29,12 +29,12 @@
         <div class="error error-txt">Password can't be blank</div>
       </div>
       <div class="pass-txt"><a href="#">Forgot password?</a></div>
-      <input type="submit" value="Login">
+      <input type="submit" name="login" value="Login">
     </form>
-    <div class="sign-txt">Not yet member? <a href="#">Signup now</a></div>
+    <div class="sign-txt">Not yet member? <a href="signup.php">Signup now</a></div>
   </div>
 
-  <script src="js/app.js"></script>
+  <!-- <script src="js/app.js"></script> -->
 
 </body>
 </html>
