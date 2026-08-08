@@ -105,10 +105,10 @@ $users = array(
 echo $users[0][0]." => ".$users[0][1]." => ".$users[0][2];
 */
 
-// 15--- Form Login --"form2/sign.php"-- //
+// 15--- Form Login --"form2/signin.php"-- //
 // 1- POST method.
 
-// echo "<hr>".'<br>';
+// echo "<hr>"."<br>";
 // $username=$_POST["username"];
 
 // $password=$_POST["password"];
@@ -126,13 +126,16 @@ echo $users[0][0]." => ".$users[0][1]." => ".$users[0][2];
 // echo $username. "<br>";
 // echo $password. "<br>";
 
-// 16--- connect to DB --"form2/connect.php"-- //
+// 16--- PHP connect to mySQL --"form2/connect.php"-- //
 //
 
-// 17--- Form Signup --"form2/signup.php, insert.php"-- //
+// 17--- PHP mySQL create table + insert --"form2/signup.php, insert.php"-- //
 //
 
-// 18--- Form Login --"form2/signin.php, check_user.php"-- //
+// 18--- PHP mySQL select data --"form2/signin.php, check_user.php"-- //
+//
+
+// 19--- PHP mySQL update data --"form2/ ... "-- //
 //
 
 ?>

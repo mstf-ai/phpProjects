@@ -1,5 +1,5 @@
 <?php
-
+/*
 if(isset($_POST["login"])){
     $username=$_POST["username"];
     $password=$_POST["password"];
@@ -15,6 +15,28 @@ if(isset($_POST["login"])){
         echo "wrong ";
     }
 }
+*/
+// ================================= //
 
+if(isset($_POST["login"])){
+    $username=$_POST["username"];
+    $password=$_POST["password"];
+
+    require 'connect.php';
+
+    $select="select * from users where username='$username'";
+    $query= mysqli_query($conn, $select);
+
+    if(mysqli_num_rows($query)>0){
+        $row= mysqli_fetch_array($query);
+        if($row["password"] == $password){
+            header("location:home.php");
+        } else {
+            echo 'wrong password';
+        }
+    } else {
+        echo 'username is not registered with the system';
+    }
+}
 
 ?>
