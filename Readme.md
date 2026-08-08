@@ -63,6 +63,6 @@ Follow these quick steps to pull down this code and run the practice scripts on 
 
 ## 📬 Contact & Connect
 
-*   **GitHub**: [@YOUR_USERNAME](https://github.com)
-*   **LinkedIn**: [Your Name](https://linkedin.com)
+*   **GitHub**: [@mstf-ai](https://github.com/mstf-ai)
+*   **LinkedIn**: [Mostafa Khamis](https://www.linkedin.com/in/mostafa-khamis-ba7a581bb)
 
