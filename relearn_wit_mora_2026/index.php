@@ -108,13 +108,32 @@ echo $users[0][0]." => ".$users[0][1]." => ".$users[0][2];
 // 15--- Form Login --"form2/sign.php"-- //
 // 1- POST method.
 
-echo "<hr>".'<br>';
-$username=$_GET["username"];
+// echo "<hr>".'<br>';
+// $username=$_POST["username"];
 
-$password=$_GET["password"];
+// $password=$_POST["password"];
 
-echo $username. "<br>";
-echo $password. "<br>";
+// echo $username. "<br>";
+// echo $password. "<br>";
+
+// 2- GET method.
+
+// echo "<hr>".'<br>';
+// $username=$_GET["username"];
+
+// $password=$_GET["password"];
+
+// echo $username. "<br>";
+// echo $password. "<br>";
+
+// 16--- connect to DB --"form2/connect.php"-- //
+//
+
+// 17--- Form Signup --"form2/signup.php, insert.php"-- //
+//
+
+// 18--- Form Login --"form2/signin.php, check_user.php"-- //
+//
 
 ?>
 
