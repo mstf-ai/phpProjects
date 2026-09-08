@@ -135,8 +135,8 @@ echo $users[0][0]." => ".$users[0][1]." => ".$users[0][2];
 // 18--- PHP mySQL select data --"form2/signin.php, check_user.php"-- //
 //
 
-// 19--- PHP mySQL update data --"form2/ ... "-- //
-//
+// 19--- PHP mySQL update data --"form2/show_users, ...  "-- //
+//  
 
 ?>
 

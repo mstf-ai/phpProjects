@@ -19,16 +19,22 @@
 
 // *************** Better modern way ****************** //
 // إعدادات الاتصال
-define("localhost", "localhost");
-define("username", "root");
-define("password", "");
-define("dbname", "mora_php_training");
+define("DB_HOST", "localhost");
+define("DB_USERNAME", "root");
+define("DB_PASSWORD", "");
+define("DB_NAME", "mora_php_training");
 
 // الطريقة الحديثة والمضمونة لمعالجة الأخطاء في PHP 8+
+mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+
 try {
     // محاولة الاتصال
-    $conn = new mysqli(localhost, username, password, dbname);
-    // echo "Connected successfully";
+    $conn = new mysqli(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME);
+    $conn->set_charset("utf8mb4");
+
+    if (!$conn->ping()) {
+        throw new mysqli_sql_exception("Database connection is not responding.");
+    }
 } catch (mysqli_sql_exception $e) {
     // في حال حدوث أي خطأ في الاتصال، سيتم تنفيذ هذا الجزء تلقائياً
     // نستخدم دالة مخصصة لعرض رسالة نظيفة للمستخدم دون كشف تفاصيل السيرفر الحساسة
